@@ -1,4 +1,5 @@
 library(shiny)
+source("functions.R")
 
 # Define UI for app that draws a histogram ----
 ui <- fluidPage(
@@ -25,7 +26,9 @@ ui <- fluidPage(
     mainPanel(
       
       # Output: Histogram ----
-      plotOutput(outputId = "distPlot")
+      plotOutput(outputId = "distPlot"),
+      h3("This proves you can use a seperate functions script"),
+      textOutput("sum")
       
     )
   )
@@ -52,6 +55,11 @@ server <- function(input, output) {
          main = "Histogram of waiting times")
     
   })
+  
+  output$sum <- renderText(
+    adding(2, 6)
+  )
+  
   
 }
 
